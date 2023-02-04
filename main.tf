@@ -9,11 +9,11 @@ terraform {
       version = "~> 4.0"
     }
   }
-  # backend "s3" {
-  #   region = "us-east-1"
-  #   bucket = "terraform-prod-stage-stateasdasdsad"
-  #   key    = ""
-  # }
+  backend "s3" {
+    region = "us-east-1"
+    bucket = "terraform-states-lisbom"
+    key    = "estudos-eduardo/prod/terraform.tfstate"
+  }
 
   required_version = ">= 0.14"
 }
