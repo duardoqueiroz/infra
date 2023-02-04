@@ -24,7 +24,5 @@ resource "aws_security_group" "admin_sg" {
     security_groups = []
   }]
 
-  tags = {
-    "Name" = "eduardo-estudos"
-  }
+  tags = var.tags
 }

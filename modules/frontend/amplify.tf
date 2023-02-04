@@ -23,11 +23,9 @@ resource "aws_amplify_app" "amplify" {
   auto_branch_creation_config {
     enable_auto_build = true
   }
-  environment_variables = local.frontend_vars
+  environment_variables = var.environment_vars
   
-  tags = {
-    "Name" = "eduardo-estudos"
-  }
+  tags = var.tags
 }
 
 resource "aws_amplify_branch" "prod_branch" {
@@ -37,7 +35,5 @@ resource "aws_amplify_branch" "prod_branch" {
     aws_amplify_app.amplify
   ]
 
-  tags = {
-    "Name" = "eduardo-estudos"
-  }
+  tags = var.tags
 }

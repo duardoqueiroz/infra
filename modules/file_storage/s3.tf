@@ -1,9 +1,7 @@
 resource "aws_s3_bucket" "file-storage" {
   bucket = "eduardo-estudos-storage"
 
-  tags = {
-    Name = "eduardo-estudos"
-  }
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_public_access_block" "file-storage" {
@@ -12,20 +10,6 @@ resource "aws_s3_bucket_public_access_block" "file-storage" {
   block_public_policy     = false
   ignore_public_acls      = false
   restrict_public_buckets = false
-}
-
-# we need a service account user
-resource "aws_iam_user" "file-storage-user" {
-  name = "srv-eduardo-estudos-storage"
-
-  tags = {
-    Name = "eduardo-estudos"
-  }
-}
-
-# generate keys for service account user
-resource "aws_iam_access_key" "file-storage" {
-  user = "${aws_iam_user.file-storage-user.name}"
 }
 
 # grant user access to the bucket

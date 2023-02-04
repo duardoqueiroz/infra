@@ -17,10 +17,8 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
-  key_name = aws_key_pair.key_pair.key_name
+  key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.admin_sg.id]
   
-  tags = {
-    Name = "eduardo-estudos"
-  }
+  tags = var.tags
 }

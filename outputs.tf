@@ -1,5 +1,5 @@
 output "instance_ip" {
-  value = aws_instance.web.public_ip
+  value = module.admin.instance_ip
 }
 
 output "private_key" {
@@ -7,5 +7,5 @@ output "private_key" {
 }
 
 output "instance_url" {
-  value = aws_instance.web.public_dns
+  value = module.admin.instance_url
 }
